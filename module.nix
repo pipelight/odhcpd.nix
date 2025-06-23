@@ -7,6 +7,6 @@
 }:
 with lib; {
   environment.systemPackages = with pkgs; [
-    odhcpd
+    inputs.odhcpd.packages.default
   ];
 }
