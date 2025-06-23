@@ -1,0 +1,56 @@
+# Configuration options at: https://openwrt.org/docs/techref/odhcpd
+
+config odhcpd
+	option maindhcp '1'
+
+	option leasefile	'/tmp/dhcpv6.leases'
+  option loglevel '4'
+
+config dhcp
+
+  ###############################
+  ## dhcpv4
+	option ifname	'vm-dhcp'
+	option start 	'100'
+	option limit	'150'
+	option leasetime	'12h'
+
+  option dhcpv4 'server'
+
+  # Host ID length of dynamically created leases, allowed values: 12 - 64 (bits).
+  # Issue when setting it to 64
+  # dhcpv6_hostidlength '64'
+  
+  # Assign all viable DHCPv6 addresses in statefull mode. 
+  # If disabled only the DHCPv6 address having the longest preferred lifetime is assigned.
+  # option dhcpv6_assignall '1'
+
+  ###############################
+  ## stateful dhcpv6
+  # option dhcpv6 'server'
+  # option ra 'server'
+  # option ra_flags 'managed-config'
+  # option ra_slaac '0'
+
+  ###############################
+  ## stateless dhcpv6
+  # option ra 'server'
+  # option ra_flags 'other-config'
+  # option ra_slaac '1'
+  # option ra_dns '1'
+
+  ###############################
+  ## ra no slaac
+  # option ra 'disabled'
+  option ra 'server'
+  option ra_flags 'other-config'
+  option ra_slaac '1'
+  option ra_dns '1'
+  
+  ###############################
+  ## stateful dhcpv6 + ra
+  # option dhcpv6 'server'
+  # option ra 'server'
+  # option ra_flags 'managed-config'
+  # option ra_slaac '1'
+  # option ra_dns '1'
